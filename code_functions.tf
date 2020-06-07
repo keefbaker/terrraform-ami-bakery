@@ -25,15 +25,15 @@ resource "aws_codebuild_project" "ami_bakery" {
         value = environment_variable.value.value
       }
     }
-    vpc_config {
-      vpc_id = data.aws_subnet.selected.vpc_id
 
-      subnets = var.subnets
-
-      security_group_ids = var.sec_groups
-    }
   }
+  vpc_config {
+    vpc_id = data.aws_subnet.selected.vpc_id
 
+    subnets = var.subnets
+
+    security_group_ids = var.sec_groups
+  }
   source {
     type     = var.git_repo == "" ? "CODECOMMIT" : "GITHUB_ENTERPRISE"
     location = var.git_repo == "" ? aws_codecommit_repository.repo.0.clone_url_http : var.git_repo

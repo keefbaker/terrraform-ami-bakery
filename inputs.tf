@@ -45,3 +45,7 @@ variable "sec_groups" {
   type    = list
   default = []
 }
+
+variable "packer_version" {
+  default = "latest"
+}
