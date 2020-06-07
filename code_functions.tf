@@ -38,5 +38,6 @@ resource "aws_codebuild_project" "ami_bakery" {
     type     = var.git_repo == "" ? "CODECOMMIT" : "GITHUB_ENTERPRISE"
     location = var.git_repo == "" ? aws_codecommit_repository.repo.0.clone_url_http : var.git_repo
   }
+  tags = var.tags
 
 }

@@ -5,13 +5,15 @@ variable "prefix" {
 
 variable "s3_bucket" {
   type        = string
-  description = "If you already have an s3 bucket to store images you can specify here"
+  description = "If you already have an s3 bucket to store images you can specify the name here"
   default     = ""
 }
+
 variable "schedule_frequency" {
   type        = string
   description = "eg: daily or weekly"
 }
+
 variable "schedule_time" {
   default = "0:00"
 }
@@ -48,4 +50,12 @@ variable "sec_groups" {
 
 variable "packer_version" {
   default = "latest"
+}
+
+variable "tags" {
+  type = map
+  default = {
+    Function   = "ami_bakery"
+    Department = "FM"
+  }
 }
